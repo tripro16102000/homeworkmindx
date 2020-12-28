@@ -1,54 +1,85 @@
-//3. given an array of numbers, find the pair of adjacent elements that has the largest product and return that product
-
-// inputArray = [3 ,6 , -2 , -5 , 7 , 3]
-
-// adjacentElementsProduct(inputArray) = 21
-
-function adjacentElementsProduct(inputArray) {
-    
-    let a =inputArray[0]*inputArray[1];
-
-    let b = a;
-    
-    for(let i=1;i<inputArray.length;i++){
-    
-        let a=inputArray[i]*inputArray[i+1];
-        if(a > b){
-            b=a;
-        };
-    };
-    
-    return b;
-};
-
-console.log(adjacentElementsProduct([3 ,6 , -2 , -5 , 7 , 3]));
-
-// 4. a. Given an array of number, find the odd number
-// b. find but not use loop
-
-// inputArray = [3, 6, -2, -5, 7, 3, 8, 10, 11]
-
-// output = [6, -2, 8, 10]
-
-//a
-function oddNumber(inputArray) {
-    let arr = [];
-    
-    for(let i = 0; i < inputArray.length; i++) {
-        if(inputArray[i] % 2 === 0) {
-            arr.push(inputArray[i])
-        }
+class Person {
+    name
+    age
+    job
+    id
+    constructor(name, age , job , id){
+        this.name = name;
+        this.age = age;
+        this.job = job;
+        this.id = id;
+        // console.log(this)
     }
-    
-    return arr
+};
+//thong tin ca nhan
+const person1 = new Person ('Nguyen Van A', 40 , 'Teacher' , 12345678)
+const person2 = new Person ('Pham Thi B', 40 , 'Doctor' , 69696969)
+const person3 = new Person ('Nguyen Thi C', 18 , 'Student', 12341234)
+const person4 = new Person ('Le Van D', 45 , 'Police', 34343434)
+const person5 = new Person ('Bui Thi T', 43 , 'Seller', 88888888)
+const person6 = new Person ('Le Van V', 20 , 'Student', 12121212)
+
+
+
+class Family {
+    address
+    familyMembers
+    constructor(address , familyMembers){
+      this.address = address
+        this.familyMembers = []
+    }
+    addPerson(person){
+        this.familyMembers.push(person)
+        
+    }
+    getListPerson(){
+      for(let item of this.familyMembers){
+      console.log(item)
+      }
+
+    }
+      }
+
+// dia chi nha so thanh vien
+const family1 = new Family('Nha so 1')
+
+family1.addPerson(person1)
+family1.addPerson(person2)
+family1.addPerson(person3)
+// console.log(family1)
+
+
+const family2 = new Family('Nha so 2')
+
+family2.addPerson(person4)
+family2.addPerson(person5)
+family2.addPerson(person6)
+//console.log(family2)
+
+
+//khu pho
+class Town{
+  listFamilies
+  constructor(){
+      this.listFamilies = [];
+  }
+  addfamily(family){
+      this.listFamilies.push(family);
+  }
+  getListFamily(){
+    for(let items of this.listFamilies){
+      console.log(items)
+    }
+  }
 }
+let town = new Town()
+town.addfamily(family1);
+town.addfamily(family2);
+console.log(town.getListFamily())
+console.log(family1.getListPerson())
+console.log(family2.getListPerson())
 
-console.log(oddNumber([3, 6, -2, -5, 7, 3, 8, 10, 11]))
 
-//b
-inputArr = [3, 6, -2, -5, 7, 3, 8, 10, 11]
 
-function noUseLoop(inputArr){
-    return inputArr.filter(input => (input % 2) === 0 )
-}
-console.log(noUseLoop(inputArr));
+
+
